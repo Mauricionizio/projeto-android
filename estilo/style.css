@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+    font-family: 'Android';
+    src: url(../fontes/idroid.otf) format('opentype');
+}
+
+/* 
+
+APÓS O 'esqueleto' DO SITE ESTAR PRONTO, COMEÇOU A COLOCAR OS ELEMENTOS CSS
+
+*/
+
+
+
+:root {
+    /*
+    
+    ':root' é um seletor de variáveis que seu identificador é '--**nome que deseja para o seu elemento**:'
+    
+    para indicar essa variável dentro de algum seletor basta escolher o comando desejável e colocar 'var(--**nome da sua varável**);'
+    */
+
+    --cor0: #c5ebd6;
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #063d1e;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --fonte-destaque: 'Bebas Neue', sans-serif;
+    --fonte-android: 'Android', sans-serif;
+
+}
+
+* {
+    /*
+    
+    '*' é um seletor que dentro dele é possível fazer modificações globais no arquivo como um todo
+    
+    */
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: var(--cor0);
+    font-family: var(--fonte-padrao);
+}
+
+a.external::after {
+    /*
+    
+    ESSE SELETOR ESTÁ SE REFERINDO A TODOS OS LINKS ('a') QUE AO CLICAR IRÁ MANDAR PARA UMA PÁGINA EXTERNA.
+
+    PARA SELECIONARMOS TODOS OS LINKS COM ESSA QUALIDADE, LÁ NO HTML COLOCAMOS UMA CLASSE ('class=') CHAMADA DE 'external' NA MESMA LINHA DE TODOS OS CÓDIGO DE LINK.
+
+    AQUI NO CSS PARA INDICARMOS UM 'class=' DEVEMOS USAR O '.**nome escolhido para a classe**'.
+
+    O '::after' É UM PSEUDO-ELEMENTO QUE INDICA QUE SERÁ INSERIDO ALGO DEPOIS. (QUE SERÁ COLOCADO NO SELETOR).
+
+    NESTE CASO COLOCAMOS UM EMOJI DE CADEADO PARA INDICAR UM LINK UTILIZANDO O COMANDO 'content: \**código do emoji**'
+    SITE PARA EMOJIS (emojipedia.org)
+
+    UMA BOA ESTRATÉGIA PARA DEIXAR UM EMOJI MAIS LONGE DO ELEMENTO É COLOCANDO O CÓDIGO DA BARRA DE ESPAÇO QUE É '\00a0'
+
+    */
+
+    content: '\00a0\1F517';
+}
+
+header {
+
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    background-color: var(--cor4);
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+} 
+
+header > h1 {
+    color: white;
+    font-family: var(--fonte-destaque);
+    margin-bottom: 20px;
+    font-size: 3em;
+    font-weight: normal;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.726);
+   
+}
+
+header > p {
+    color: white;
+    font-family: var(--fonte-padrao);
+    font-size: 1.2em;
+    max-width: 600px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.726);
+}
+
+nav {
+    background-color: var(--cor5);
+    padding: 10px;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.37);
+}
+nav > a {
+    color: var(--cor1);
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bolder;
+    border-radius: 5px;
+    transition-duration: .5s;
+}
+
+nav > a:hover {
+    background-color: var(--cor3);
+    color: var(--cor5);
+}
+
+main {
+    /*
+
+    **RESPONSIVIDADE**
+
+    O MEU 'main' É A BOX PRINCIPAL ONDE ESTÃO OS CONTEÚDOS DO MEU SITE.
+    COLOCANDO 'min-width:' (largura mínima)  ESCOLHO A LARGURA MÍNIMA QUE MEU 'main' IRÁ SE ADAPTAR.
+
+    E COLOCANDO 'max-widht:' (largura máxima) ESCOLHO A LARGURA MÁXIMA QUE MEU 'main' IRÁ FICAR.
+
+    COLOCAR 'margin: auto' (margem) IRA FAZER A MARGEM DO MEU 'main' SE ADAPTAR AO CENTRO DA TELA (quando for maior que a largura máxima).
+
+    PARA FAZERMOS A RESPONSIVIDADE ATRAVÉS DA MUDANÇA DE IMAGENS, DEVE-SE CRIAR LÁ NO HTML UMA LINHA DE CÓDIGO CHAMADA <picture>, E DENTRO DELA COLOCAR O CÓDIGO <source media=(max-width:**tamanho máximo desejado** src=**o arquivo da imagem desejado**).
+    ESSE CÓDIGO SERVE PARA LIMITAR A LARGURA MAXIMA QUE A IMÁGEM IRÁ SE ADAPTAR NA TELA DO SITE.
+    ABAIXO DESSE PRIMEIRO CÓDIGO (DENTRO DE PICTURE AINDA), DEVE-SE COLOCAR O ARQUIVO DA IMAGEM PADRÃO (EM TESE MAIOR DO QUE A PRIMEIRA) COM O COMANDO NORMAL DE ADICIONAR IMAGEM 'img src=**arquivo da imagem** alt=**legenda da foto**, COM ISSO, SE A TELA PASSAR DA LARGURA MÁXIMA COLOCADA NO CODIGO A CIMA, AUTOMATICAMENTE IRÁ MUDAR PARA A OUTRA IMAGEM MAIOR>
+    
+    */
+
+    padding: 20px;
+    min-width: 250px;
+    max-width: 1000px;
+    background-color: white;
+    margin: auto;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.603);
+
+}
+
+main img {
+    /*
+    
+    'main img' ESTÁ INDICANDO QUE ESTÁ SE REFERINDO AS IMAGENS QUE ESTÃO DENTRO DO MAIN
+
+    'width: 100%' (largura em 100%) IRA FAZER TODAS AS IMAGENS OCUPAREM 100% DA LARGURA DA BOX MAIN (independente do tamanho da box, a imagem irá se adaptar)
+
+    */
+    width: 100%;
+}
+
+main img.pequena {
+
+    /*
+    
+    FOI PRECISO FAZER ESSE SELETOR DEVIDO TER UMA IMAGEM QUE É MENOR QUE AS OUTRAS. COM O SELETOR 'main img' ESTÁ MOSTRANDO QUE A IMAGEM FAZ PARTE DA BOX MAIN, E COLOCANDO O '.pequena' ESTAMOS IDENTIFICANDO ESSA IMAGEM ESPECÍFICA ATRAVÉS DA PSEUDO-CLASSE 'class=' LÁ NO HTML QUE COLOCAMOS O NOME 'PEQUENA' E QUE AQUI NO CSS ESTÁ INDICADA PELO '.pequena';
+
+    POR ELA NATURALMENTE SER PEQUENA E LÁ NO SELETOR 'main img' TERMOS COLOCADO width:100% ESSE IMAGEM MENOR DEU MUITO ZOOM, AQUI NESTE SELETOR CONSEGUIMOS DIMINUIR ESSE LARGURA COLOCANDO UM LIMITADOR NELA DE 350px .
+
+    QUANDO COLOCAMOS 'margin: auto' ESSA IMAGEM ERA PARA CENTRALIZAR DE ACORDO COM O TAMANHO DA MAIN, PORÉM UMA IMAGEM NÃO É UM BLOCO, ENTÃO ATRAVÉS DO 'display: block' CONSEGUIR FAZER A IMAGEM FICAR PRESA. ISSO É EFICAZ PARA QUANDO A IMAGEM É BEM MENOR QUE A LARGURA DO MAIN, E QUE PRECISA FICAR CENTRALIZADA.
+    */
+    max-width: 350px;
+    display: block;
+    margin: auto;
+}
+
+
+/*
+
+ESSA CONFIGURAÇÃO DE VIDEO, É UMA MANEIRA DE DEIXAR UM VIDEO LINKADO DO YOUTUBE RESPONSIVO
+
+*/
+div.video {
+    background-color: var(--cor5);
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 57%;
+    position: relative;
+}
+
+div.video > iframe {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+
+}
+
+main h1 {
+    color: var(--cor5);
+    font-family: var(--fonte-android);
+    font-weight: normal;
+    font-size: 1.8em;
+}
+
+main h2 {
+    font-family: var(--fonte-android);
+    color: var(--cor4);
+    font-size: 1.3em;
+    font-weight: normal;
+    background-image: linear-gradient(to right, var(--cor1), transparent);
+    text-indent: 8px;
+}
+
+main p {
+    margin: 15px 0px 15px 0px;
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 2em;
+    font-size: 1em;
+}
+
+main strong {
+    color: var(--cor4);
+    font-weight: bold;
+  
+    padding: 2px 6px;
+}
+
+main a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: var(--cor5);
+    background-color: var(--cor1);
+    padding: 2px 6px;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: var(--cor3);
+}
+
+aside {
+    background-color: var(--cor1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.322);
+}
+
+aside > h3 {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 0 -10px;
+    border-radius: 10px 10px 0px 0px;
+    
+}
+
+aside > ul {
+    list-style-position: inside;
+    list-style-type:'\1F5F8\00A0\00A0';
+    columns: 2;
+}
+
+footer {
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor1);
+}
